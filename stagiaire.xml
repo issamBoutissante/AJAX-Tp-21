@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stagiaire>
+    <st>
+        <nom>Boutissante</nom>
+        <section>TDI</section>
+        <niveau>1</niveau>
+        <cours>Jour</cours>
+    </st>
+    <st>
+        <nom>Issam</nom>
+        <section>TDI</section>
+        <niveau>2</niveau>
+        <cours>Soir</cours>
+    </st>
+    <st>
+        <nom>oussama</nom>
+        <section>TDI</section>
+        <niveau>1</niveau>
+        <cours>Jour</cours>
+    </st>
+    <st>
+        <nom>omar</nom>
+        <section>TDI</section>
+        <niveau>2</niveau>
+        <cours>jour</cours>
+    </st>
+</stagiaire>

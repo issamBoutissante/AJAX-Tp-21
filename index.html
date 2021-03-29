@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tp 21</title>
+</head>
+<body>
+    <center>
+        <h1>Parcourir la liste des stagiaire</h1>
+        Nom:...... <label id="nom"></label><br><br>
+        Section:...... <label id="section"></label><br><br>
+        Niveau:...... <label id="niveau"></label><br><br>
+        Cours:...... <label id="cours"></label><br><br>
+        <div>
+            <input type="button" id="premier" value="|<<">
+            <input type="button" id="suivant" value=">>">
+            <input type="button" id="precedent" value="<<">
+            <input type="button" id="dernier" value=">>|">
+        </div>
+    </center>
+</body>
+<script src="./jquery.js"></script>
+<script>
+    $(()=>{
+        
+        var data;
+        var i=0
+        var length;
+        $.ajax({
+            url:'./stagiaire.xml',
+            contentType:"XML",
+            success:(xmlData)=>{
+                length =$(xmlData).find('st').length
+                data=xmlData
+                afficher()
+        },error:()=>{
+            console.log("error")
+        }
+    })
+    function afficher(){
+        var stagiaire=$(data).find('st')[i]
+        $("#nom").text(stagiaire.getElementsByTagName("nom")[0].innerHTML)
+        $("#section").text(stagiaire.getElementsByTagName("section")[0].innerHTML)
+        $("#niveau").text(stagiaire.getElementsByTagName("niveau")[0].innerHTML)
+        $("#cours").text(stagiaire.getElementsByTagName("cours")[0].innerHTML) 
+    }
+
+    //navigation
+    $("#premier").click(function(){
+        i=0
+        afficher()
+    })
+    $('#suivant').click(function(){
+        if(i==(length-1))return
+        i++
+        afficher()
+    })
+    $("#precedent").click(function(){
+        if(i==0)return
+        i--
+        afficher()
+    })
+    $("#dernier").click(function(){
+        i=length-1
+        afficher()
+    })
+    })
+</script>
+</html>
