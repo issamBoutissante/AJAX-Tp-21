@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tp 21</title>
+</head>
+<body>
+    <center>
+        <h1>Parcourir la liste des stagiaire</h1>
+        Nom:...... <label id="nom"></label><br><br>
+        Section:...... <label id="section"></label><br><br>
+        Niveau:...... <label id="niveau"></label><br><br>
+        Cours:...... <label id="cours"></label><br><br>
+        <div>
+            <input type="button" id="premier" value="|<<">
+            <input type="button" id="suivant" value=">>">
+            <input type="button" id="precedent" value="<<">
+            <input type="button" id="dernier" value=">>|">
+        </div>
+    </center>
+</body>
+<script>
+    var data;
+    var i=0
+    var length;
+    var xhr=new XMLHttpRequest()
+    xhr.onreadystatechange=()=>{
+        if(xhr.readyState==4){
+            data=xhr.responseXML
+            length=data.getElementsByTagName('st').length
+            afficher()
+        }
+    }
+    function afficher(){
+        var stagiaire=data.getElementsByTagName("st")[i]
+        document.getElementById("nom").innerHTML=stagiaire.getElementsByTagName("nom")[0].innerHTML
+        document.getElementById("section").innerHTML=stagiaire.getElementsByTagName("section")[0].innerHTML
+        document.getElementById("niveau").innerHTML=stagiaire.getElementsByTagName("niveau")[0].innerHTML
+        document.getElementById("cours").innerHTML=stagiaire.getElementsByTagName("cours")[0].innerHTML
+    }
+    xhr.open("GET","./stagiaire.xml")
+    xhr.send(null)
+    //navigation
+    document.getElementById("premier").onclick=function(){
+        i=0
+        afficher()
+    }
+    document.getElementById('suivant').onclick=function(){
+        if(i==(length-1))return
+        i++
+        afficher()
+    }
+    document.getElementById("precedent").onclick=function(){
+        if(i==0)return
+        i--
+        afficher()
+    }
+    document.getElementById("dernier").onclick=function(){
+        i=length-1
+        afficher()
+    }
+</script>
+</html>

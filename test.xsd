@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:shema xmlns:xs="http://www.w3.org/2001/XMLShema">
+<xs:element name="repertoire">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="personne" minOccurs="0" maxOccurs="3">
+                <xs:complexType>
+                    <xs:element name="nom" type="xs:string"/>
+                    <xs:element name="prenom" type="xs:string"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+</xs:shema>

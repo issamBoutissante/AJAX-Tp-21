@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT stagiaire (st*)>
+<!ELEMENT st (nom,section,niveau,cours)>
+<!ELEMENT nom (#PCDATA)>
+<!ELEMENT section (#PCDATA)>
+<!ELEMENT niveau (#PCDATA)>
+<!ELEMENT cours (#PCDATA)>
