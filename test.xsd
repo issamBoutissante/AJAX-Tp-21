@@ -1,15 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:shema xmlns:xs="http://www.w3.org/2001/XMLShema">
-<xs:element name="repertoire">
-    <xs:complexType>
-        <xs:sequence>
-            <xs:element name="personne" minOccurs="0" maxOccurs="3">
-                <xs:complexType>
-                    <xs:element name="nom" type="xs:string"/>
-                    <xs:element name="prenom" type="xs:string"/>
-                </xs:complexType>
-            </xs:element>
-        </xs:sequence>
-    </xs:complexType>
-</xs:element>
-</xs:shema>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="repertoire">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="personne" minOccurs="0" maxOccurs="3">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="nom" type="xs:string"></xs:element>
+                            <xs:element name="prenom" type="xs:string"></xs:element>
+                            <xs:element name="adresse">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="numero" type="xs:int"></xs:element>
+                                        <xs:element name="voie">
+                                            <xs:complexType>
+                                                <xs:simpleContent>
+                                                    <xs:extension base="xs:string">
+                                                        <xs:attribute name="type" type="xs:string"></xs:attribute>
+                                                    </xs:extension>
+                                                </xs:simpleContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="codePostal" type="xs:int"></xs:element>
+                                        <xs:element name="ville" type="xs:string"></xs:element>
+                                        <xs:element name="pays" type="xs:string"></xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="telephones">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="telephone" minOccurs="1" maxOccurs="2">
+                                            <xs:complexType>
+                                                <xs:simpleContent>
+                                                    <xs:extension base="xs:string">
+                                                        <xs:attribute name="type" type="xs:string"></xs:attribute>
+                                                    </xs:extension>
+                                                </xs:simpleContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="emails">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="email" minOccurs="1" maxOccurs="2">
+                                            <xs:complexType>
+                                                <xs:simpleContent>
+                                                    <xs:extension base="xs:string">
+                                                        <xs:attribute name="type" type="xs:string"></xs:attribute>
+                                                    </xs:extension>
+                                                </xs:simpleContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="sexe" type="xs:string"></xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
